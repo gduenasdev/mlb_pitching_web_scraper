@@ -5,7 +5,7 @@ from MlbMatchup import MlbMatchup
 from rankMatchups import dropTbdMatchups, rankMatchups
 
 # load all html of our webpage
-html_text = requests.get('https://www.mlb.com/probable-pitchers/2022-09-07').text
+html_text = requests.get('https://www.mlb.com/probable-pitchers').text
 soup = BeautifulSoup(html_text, 'lxml')
 # container of all pitching matches
 mlb_matchup_container = soup.find('div', class_='container')
@@ -23,5 +23,5 @@ for matchup in mlb_matchup_list:
 ranked_matchups = dropTbdMatchups(ranked_matchups)
 
 # oder matchups from most favorable to least favorable
-ranked_matchups = rankMatchups(ranked_matchups)
+# ranked_matchups = rankMatchups(ranked_matchups)
 
