@@ -16,11 +16,64 @@ def dropTbdMatchups(mlb_matchups):
         start += 1
     return mlb_matchups[:end]
 
+# will use merge sort to sort the matchups from most favorable to least
 def rankMatchups(mlb_matchups):
-    pass
+    return mergeSort(mlb_matchups)
 
+def mergeSort(array):
+    if len(array) > 1:
+        mid = len(array) // 2
+        left = array[:mid]
+        right = array[mid:]
+
+        # Recursive call on each half
+        mergeSort(left)
+        mergeSort(right)
+
+        # Two iterators for traversing the two halves
+        i = 0
+        j = 0
+        
+        # Iterator for the main list
+        k = 0
+        
+        while i < len(left) and j < len(right):
+            if compareEra(left[i]) >= compareEra(right[j]):
+              # The value from the left half has been used
+              array[k] = left[i]
+              # Move the iterator forward
+              i += 1
+            else:
+                array[k] = right[j]
+                j += 1
+            # Move to the next slot
+            k += 1
+
+        # For all the remaining values
+        while i < len(left):
+            array[k] = left[i]
+            i += 1
+            k += 1
+
+        while j < len(right):
+            array[k]=right[j]
+            j += 1
+            k += 1
+
+# compare both pitchers era, must type cast from a string to a float to compare
+# pitchers with no era will be '--.--' so we must except ValueErrors in this case
 def compareEra(mlb_matchup):
-    pass
+    away_era = mlb_matchup.getPitcherInfo().getAwayPitcher().getEra().split(' ')
+    home_era = mlb_matchup.getPitcherInfo().getHomePitcher().getEra().split(' ')
 
-def compareRecord(mlb_matchup):
-    pass
+    try:
+        away_era = float(away_era[0])
+    except ValueError:
+        away_era = 0.0
+    
+    try:
+        home_era = float(home_era[0])
+    except ValueError:
+        home_era = 0.0
+
+    return abs(away_era - home_era)

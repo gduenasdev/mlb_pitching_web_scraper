@@ -23,5 +23,8 @@ for matchup in mlb_matchup_list:
 ranked_matchups = dropTbdMatchups(ranked_matchups)
 
 # oder matchups from most favorable to least favorable
-# ranked_matchups = rankMatchups(ranked_matchups)
+rankMatchups(ranked_matchups)
 
+# print out matchup in order from most favorable to least
+for matchup in ranked_matchups:
+    print(matchup.getMlbMatchupToString())
