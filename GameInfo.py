@@ -1,4 +1,4 @@
-from helpers import toText
+from utilities import toText
 # gives us access to the team info
 # code will strip the names of the pitchers
 # extract the record from our pitching matchup to analyze further 

@@ -1,16 +1,28 @@
-from helpers import toText
+from utilities import toText
 
 class Pitcher():
-    def __init__(self, name, stat_summary):
+    def __init__(self, name = 'TBD', stat_summary = 'TBD'):
         self.name = name
         self.stat_summary = stat_summary
-        self.wins = self.stat_summary.find('span', 'probable-pitchers__pitcher-wins')
-        self.losses = self.stat_summary.find('span', 'probable-pitchers__pitcher-losses')
-        self.era = self.stat_summary.find('span', 'probable-pitchers__pitcher-era')
-        self.strikeouts = self.stat_summary.find('span', 'probable-pitchers__pitcher-so')
+        self.wins = 'TBD'
+        self.losses = 'TBD'
+        self.era = 'TBD'
+        self.strikeouts = 'TBD'
+
+        self.setPitcherStats()
+    
+    def setPitcherStats(self):
+        if self.stat_summary != 'TBD':
+            self.wins = self.stat_summary.find('span', 'probable-pitchers__pitcher-wins')
+            self.losses = self.stat_summary.find('span', 'probable-pitchers__pitcher-losses')
+            self.era = self.stat_summary.find('span', 'probable-pitchers__pitcher-era')
+            self.strikeouts = self.stat_summary.find('span', 'probable-pitchers__pitcher-so')
 
     def getName(self):
-        return toText(self.name)
+        if self.name == 'TBD':
+            return self.name
+        else:
+            return toText(self.name)
 
     def getWins(self):
         return toText(self.wins)
@@ -31,4 +43,4 @@ class Pitcher():
         if self.name != 'TBD':
             return f'''{self.getName()} {self.getRecord()}\n {self.getEra()}, {self.getStrikeouts()}'''
         else:
-            return 'None'
+            return 'TBD'
