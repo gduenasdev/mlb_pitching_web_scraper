@@ -12,8 +12,5 @@ mlb_matchup_container = soup.find('div', class_='container')
 # find current pitching matchup
 mlb_matchup = mlb_matchup_container.find('div', class_='probable-pitchers__matchup')
 
-# matchup = MlbMatchup(mlb_matchup)
-# matchup.getGameInfo().printGameInfo()
-
 mlb = MlbMatchup(mlb_matchup)
-print(mlb.getPitcherInfo().getAwayPitcherInfo().getEra())
+print(mlb.getMlbMatchupToString())
