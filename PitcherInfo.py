@@ -9,8 +9,14 @@ class PitcherInfo():
         self.away_pitcher = Pitcher(self.pitcher_names[0], self.pitcher_stats[0])
         self.home_pitcher = Pitcher(self.pitcher_names[1], self.pitcher_stats[1])
     
-    def getAwayPitcherInfo(self):
+    def getAwayPitcher(self):
         return self.away_pitcher
 
-    def getHomePitcherInfo(self):
+    def printAwayPitcherInfo(self):
+        print(self.getAwayPitcher().getStatsToString())
+
+    def getHomePitcher(self):
         return self.home_pitcher
+    
+    def printHomePitcherInfo(self):
+        print(self.getHomePitcher().getStatsToString())

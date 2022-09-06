@@ -12,3 +12,10 @@ class MlbMatchup():
     
     def getPitcherInfo(self):
         return self.pitcher_info
+    
+    def getMlbMatchupToString(self):
+        game_info_string = self.getGameInfo().getGameInfoString()
+        away_pitcher_string = self.getPitcherInfo().getAwayPitcher().getStatsToString()
+        home_pitcher_string = self.getPitcherInfo().getHomePitcher().getStatsToString()
+        
+        return f'''{game_info_string}\n{away_pitcher_string}\n{home_pitcher_string}'''

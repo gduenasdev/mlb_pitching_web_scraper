@@ -7,7 +7,7 @@ class Pitcher():
         self.wins = self.stat_summary.find('span', 'probable-pitchers__pitcher-wins')
         self.losses = self.stat_summary.find('span', 'probable-pitchers__pitcher-losses')
         self.era = self.stat_summary.find('span', 'probable-pitchers__pitcher-era')
-        self.strikeouts = self.stat_summary.find('span', 'probable-pitchers__pitcher-era')
+        self.strikeouts = self.stat_summary.find('span', 'probable-pitchers__pitcher-so')
 
     def getName(self):
         return toText(self.name)
@@ -19,10 +19,13 @@ class Pitcher():
         return toText(self.losses)
     
     def getRecord(self):
-        return (f'({self.getWins}-{self.getLosses})')
+        return (f'({self.getWins()}-{self.getLosses()})')
 
     def getEra(self):
         return toText(self.era)
     
     def getStrikeouts(self):
         return toText(self.strikeouts)
+    
+    def getStatsToString(self):
+        return f'''{self.getName()} {self.getRecord()}\n {self.getEra()}, {self.getStrikeouts()}'''
