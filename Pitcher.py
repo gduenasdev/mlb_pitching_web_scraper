@@ -28,4 +28,7 @@ class Pitcher():
         return toText(self.strikeouts)
     
     def getStatsToString(self):
-        return f'''{self.getName()} {self.getRecord()}\n {self.getEra()}, {self.getStrikeouts()}'''
+        if self.name != 'TBD':
+            return f'''{self.getName()} {self.getRecord()}\n {self.getEra()}, {self.getStrikeouts()}'''
+        else:
+            return 'None'

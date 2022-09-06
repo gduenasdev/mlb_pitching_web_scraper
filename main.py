@@ -10,7 +10,8 @@ soup = BeautifulSoup(html_text, 'lxml')
 mlb_matchup_container = soup.find('div', class_='container')
 
 # find current pitching matchup
-mlb_matchup = mlb_matchup_container.find('div', class_='probable-pitchers__matchup')
+mlb_matchup_list = mlb_matchup_container.find_all('div', class_='probable-pitchers__matchup')
 
-mlb = MlbMatchup(mlb_matchup)
-print(mlb.getMlbMatchupToString())
+for mlb_matchup in mlb_matchup_list:
+    mlb = MlbMatchup(mlb_matchup)
+    print(mlb.getMlbMatchupToString())
